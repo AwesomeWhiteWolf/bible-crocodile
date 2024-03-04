@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Madimi One", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    user-select: none;
+    color: var(--text-color);
+}
+
+:root {
+    --back-color: #65B741;
+    --panel-color: azure;
+    --button-color: #FCDC2A;
+    --text-color: black;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    background: var(--back-color);
+}
+h1 {
+    font-size: 1.7em;
+    padding-left: 40%;
+    background: var(--back-color);
+    color: var(--panel-color);
+    margin: 5vh 0 3vh;
+}
+.set-panel {
+    padding-left: 35%;
+    padding-top: 8%;
+    width: 100vw;
+    height: 87vh;
+    border-radius:  100px 100px 0px 0px;
+    background-color: var(--panel-color);
+}
+h2 {
+    font-size: 1em;
+    margin: 10% 0 5%;
+}
+
+#themes > *{
+    font-size: 1.2em;
+}
+.box {
+    display: inline-block;
+    border-radius: 10px;
+    border: 1px solid gray;
+    padding: 5px;
+    margin-bottom: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+.check {
+    margin: 0 4% 0 1%;
+	width: 25px;
+	height: 25px;
+    text-align: center;
+}
+
+.check:checked {
+	accent-color: var(--back-color);
+}
+.sets {
+    margin-top: 10%;
+    margin-left: -3%;
+    width: 70vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+input {
+    display: inline-block;
+    outline: none;
+    border: 1px solid var(--text-color);
+    padding: 3px 0;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.1em;
+}
+input[type="number"] {
+    margin-left: 33%;
+}
+input[type="text"] {
+    margin-left: -7%;
+}
+.level {
+    margin-top: 1.4%;
+}
+button {
+    border-radius: 20px;
+    font-size: 150%;
+    padding: 10px 10px 14px;
+    margin-left: 10%;
+    margin-top: 30%;
+    background-color: var(--button-color);
+    border: none;
+}
+button:active {
+    background-color: #F7F6BB;
+}
+
+.hide1 {
+    display: none;
+}
+
+.word-panel {
+    display: flex;
+    border-radius: 20px;
+    padding: 5px;
+    width: 60vw;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    background-color: lightgreen;;
+}
+h3 {
+    font-size: 2em;
+}
+.panel > * > * {
+    font-size: 1.3em;
+}
+.panel {
+    display: flex;
+    width: 60vw; 
+    justify-content: space-around;
+    align-items: center;
+}
+
+@media screen and (max-width: 1100px) {
+    h1 {
+        padding-left: 20%;
+    }
+    .set-panel {
+        padding-left: 20%;
+    }     
+    #themes {
+        width: 60vw;
+    }
+}
