@@ -112,7 +112,16 @@ function checkCheck() {
 
 function wordChoice() {
   let randNum = Math.floor(Math.random() * finalArray.length);
+  while (finalArray[randNum] === undefined) {
+    randNum = Math.floor(Math.random() * finalArray.length);
+    if ([...new Set(finalArray)].length == 1) {
+      alert("Слова кончились, скоро добавим больше)");
+      screenFirst();
+      break;
+    }
+  }
   word.textContent = finalArray[randNum];
+  delete finalArray[randNum];
 }
 
 function screenFirst() {
