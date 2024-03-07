@@ -28,11 +28,14 @@ main {
     background: var(--back-color);
 }
 h1 {
+    display: block;
     font-size: 1.7em;
     padding-left: 40%;
     background: var(--back-color);
     color: var(--panel-color);
-    margin: 5vh 0 3vh;
+    margin: 4vh 0 3vh;
+    /* margin-top: 3vh;
+    margin-bottom: 1.3vh; */
 }
 .set-panel {
     padding-left: 35%;
@@ -107,6 +110,14 @@ button {
 }
 button:active {
     background-color: #F7F6BB;
+}
+
+#backBtn {
+    margin-top: 3vh;
+    margin-bottom: 1.3vh;
+    display: none;
+    background: none;
+    color: var(--panel-color);
 }
 
 .hide1 {
