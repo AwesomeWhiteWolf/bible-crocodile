@@ -8,13 +8,21 @@ const complexity = document.querySelector("input[type=text]");
 const timerText = document.querySelector("#timerText");
 const scoreText = document.querySelector("#scoreText");
 
+const modal = document.getElementById('modal1');
+const modalText = document.getElementById('modalText');
+
 const checkboxChar = document.getElementById('char');
 const checkboxBooks = document.getElementById('books');
 const checkboxEvents = document.getElementById('events');
+
+const word = document.getElementById('word');
+
 let flagChar = false;
 let flagBooks = false;
 let flagEvents = false;
-const word = document.getElementById('word');
+let finalArray = [];
+var score = 0;
+var timer = time.value;
 
 const characters = [
   ["Адам и Ева", "Мария Магдалина", "Ной", "Авраам", "Сарра", 
@@ -26,7 +34,7 @@ const characters = [
   "Лазарь", "Никодим", "Авессалом", "Иов", "Аарон", "Фамарь", 
   "Ноеминь", "Иезекииль", "Иеремия", "Исаия", "Тимофей"], //n
   ["Аполлос", "Гедеон", "Аггей", "Захария", "Амос", "Наум", "Ездра", 
-  "Ионафан", "Мардохей", "Неемия", "Сарептская вдова", 
+  "Ионафан", "Мардохей", "Неемия", "Сарептская вдова", "Девора",
   "Царица Савская", "Иосафат", "Озия", "Сепфора", "Анна", "Тавифа", 
   "Девора", "Зеведей", "Корнилий (сотник)", "Прискилла и Акила"] //h
 ];
@@ -45,12 +53,12 @@ const events = [
   ["Пропавшая овца", "Всемирный потоп", "Содом и Гоморра", 
   "Давид Против Голиафа", "Добрый Самарянин", "Вавилонская башня", 
   "Волхвы и звезда", "Крещение Иисуса", "Пост Иисуса в пустыне", 
-  "Исхода из Египта", "Воскрешение Лазаря", "Жена Лота", 
+  "Исход из Египта", "Воскрешение Лазаря", "Жена Лота", 
   "Кесарю кесарево", "Притча о брачном пире", "Притча о заблудившейся овце", 
   "Притча о талантах", "Притча о сеятеле", "Тайная вечеря"], //e
   ["Нагорная проповедь", "Хождение по воде", "Блудный сын", 
   "Фарисей и мытарь", "Богатый юноша", "Эпоха Судей", 
-  "Строение Храма Соломона", "Жертвоприношение Исаака", 
+  "Строение Храма Соломона", "Испытание Авраама", 
   "Обращение апостола Павла", "Взятие Иерихона", "Лестница Иакова", 
   "Переход через Красное море", "Новое вино в ветхие мехи"] , //n
   ["Павел и Сила в темнице", "Моисей и медный змей", "Вавилонский плен", 
@@ -59,11 +67,6 @@ const events = [
   "Горящий терновый куст", "Поиск жены для Исаака", "Лепта вдовицы", 
   "Брак в Кане Галилейской", "Притча о богаче и Лазаре", "Изгнание торгующих из храма"] //h
 ];
-
-let finalArray = [];
-
-var score = 0;
-var timer = time.value;
 
 function startGame() {
   let flagEnd = false;
@@ -74,6 +77,7 @@ function startGame() {
     timerText.textContent = "Время: " + time.value;
     timer = time.value;
   }
+
   const intervalId = setInterval(function() {
     timer--;
     timerText.textContent = "Время: " + timer;
@@ -81,13 +85,15 @@ function startGame() {
       flagEnd = true;
     }
     if (timer < 0) {
-      screenFirst();
       if (flagEnd === true) {
-        alert("Вcе");
+        modal.classList.add("open");
+        modalText.textContent ="Время вышло. Ваш результат: " + score;
       }
+      screenFirst();
       clearInterval(intervalId);
     }
   }, 1000);
+
   if (flagChar == true) {
     if (complexity.value == "Простая" || complexity.value == "") {
       finalArray.push(...(characters[0]));
@@ -154,7 +160,8 @@ function wordChoice() {
   while (finalArray[randNum] === undefined) {
     randNum = Math.floor(Math.random() * finalArray.length);
     if ([...new Set(finalArray)].length == 1) {
-      alert("Слова кончились, скоро добавим больше)");
+      modal.classList.add("open");
+      modalText.textContent ="Слова закончились, скоро добавим больше :) Ваш результат: " + score;
       screenFirst();
       score = 0;
       scoreText.textContent = "Очки: 0";
@@ -164,11 +171,6 @@ function wordChoice() {
   }
   word.textContent = finalArray[randNum];
   delete finalArray[randNum];
-}
-
-function backTo() {
-  screenFirst();
-  timer = 0;
 }
 
 function screenFirst() {
@@ -190,28 +192,36 @@ function screenSecond() {
 
 
 
-
 let startingX, startingY, movingX, movingY;
 function touchStart(e){
-    startingX = e.touches[0].clientX;
-    startingY = e.touches[0].clientY;
+  startingX = e.touches[0].clientX;
+  startingY = e.touches[0].clientY;
 }
 function touchMove(e){
-    movingX = e.touches[0].clientX;
-    movingY = e.touches[0].clientY;
+  movingX = e.touches[0].clientX;
+  movingY = e.touches[0].clientY;
 }
 function touchEnd() {
-    if(startingX+50 < movingX) {
-        score++;
-        playSound("facebook_sms.mp3");
-    } else if(startingX-50 > movingX) {
-        score--;
-        playSound("oshibka-v-kompyutere.mp3");
-    }
-    scoreText.textContent = "Очки: " + score;
-    wordChoice();
+  if(startingX+50 < movingX) {
+      score++;
+      //playSound("facebook_sms.mp3");
+  } else if(startingX-50 > movingX) {
+      score--;
+      //playSound("oshibka-v-kompyutere.mp3");
+  }
+  scoreText.textContent = "Очки: " + score;
+  wordChoice();
 }
 function playSound(audioName) {
   let audio = new Audio(audioName);
   audio.play();
+}
+
+function closeModal() {
+  modal.classList.remove("open");
+}
+
+function backTo() {
+  screenFirst();
+  timer = 0;
 }
