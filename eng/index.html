@@ -9,45 +9,45 @@
     <title>Crocodile</title>
 </head>
 
-<body >
+<body >    
     <main>
         <button id="backBtn" onclick="backTo()">&larr;</button>
-        <h1>Настройки игры</h1>
+        <h1>Game Settings</h1>
         <div class="set-panel">
             <div class="hide">
-                <h2>Темы:</h2>
+                <h2>themes:</h2>
                 <div id="themes">
                     <div class="box">
                         <input type="checkbox" onclick="checkCheck()" class="check" id="char" onclick="myFunction()"/>
-                        <label for="char" id="checkText1">Персонажи</label>
+                        <label for="char" id="checkText1">Сharacters</label>
                     </div>
                     <div class="box">
                         <input type="checkbox" onclick="checkCheck()" class="check" id="books" onclick="myFunction()"/>
-                        <label for="books" id="checkText2">Книги Библии</label>
+                        <label for="books" id="checkText2">Bible books</label>
                     </div>
                     <div class="box">
                         <input type="checkbox" onclick="checkCheck()" class="check" id="events" onclick="myFunction()"/>
-                        <label for="events" id="checkText3">События</label>
+                        <label for="events" id="checkText3">Events</label>
                     </div>
                 </div>
                 <div class="sets">
                     <div class="time">
-                        <h2>Секунд на ответ</h2>
+                        <h2>Seconds to answer</h2>
                         <input type="number" placeholder="60" step="5" max="300" min="20" required="required">
                     </div>
                     <div class="level">
-                        <h2>Сложность</h2>
-                        <input type="text" placeholder="Простая" required="required" list="default" size="10">
+                        <h2>complexity</h2>
+                        <input type="text" placeholder="Easy" required="required" list="default" size="10">
                         <datalist id="default">
-                            <option value="Простая"></option>
-                            <option value="Средняя"></option>
-                            <option value="Сложная"></option>
+                            <option value="Easy"></option>
+                            <option value="Normal"></option>
+                            <option value="Hard"></option>
                         </datalist>
                     </div>
                 </div>
                 <div class="btns">
-                    <button onclick="startGame()">Начать игру</button>
-                    <button onclick="checkLang()" id="langBtn">Рус</button>
+                    <button onclick="startGame()">Start the game</button>
+                    <button onclick="checkLang()" id="langBtn">Eng</button>
                 </div>
             </div>
 
@@ -62,7 +62,7 @@
                         <h2 id="timerText"></h2>
                     </div>
                     <div class="score">
-                        <h2 id="scoreText">Очки: 0</h2>
+                        <h2 id="scoreText">Score: 0</h2>
                     </div>
                 </div>
             </div>
