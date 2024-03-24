@@ -3,6 +3,7 @@ const forHide1 = document.querySelector(".hide1");
 const label1 = document.querySelector("#checkText1");
 const label2 = document.querySelector("#checkText2");
 const label3 = document.querySelector("#checkText3");
+const label4 = document.querySelector("#checkText4");
 const time = document.querySelector("input[type=number]");
 const complexity = document.querySelector("input[type=text]");
 const timerText = document.querySelector("#timerText");
@@ -15,12 +16,14 @@ const langBtn = document.getElementById('langBtn');
 const checkboxChar = document.getElementById('char');
 const checkboxBooks = document.getElementById('books');
 const checkboxEvents = document.getElementById('events');
+const checkboxGeography = document.getElementById('geog');
 
 const word = document.getElementById('word');
 
 let flagChar = false;
 let flagBooks = false;
 let flagEvents = false;
+let flagGeography = false;
 let flagLang = true;
 let finalArray = [];
 var score = 0;
@@ -79,6 +82,23 @@ const events = [
   "Marriage in Cana of Galilee", "Expulsion of traders from the temple"] //h
 ];
 
+const geography = [
+  ["Red Sea","Babylon", "Israel", "Nazareth", 
+  "Judea", "Sodom and Gomorrah", "Mount Sinai", 
+  "Samaria", "Canaan", "Temple of Solomon", 
+  "Tabernacle", "Bethlehem", "Palestine", "Jericho"], //e
+  ["Kibrot-Gattaawa", "Ararat", "Jordan", 
+  "Jacob's Well", "City of David", "Temple Mount", 
+  "Damascus", "Temple of Zerubbabel", 
+  "Holy of Holies (Dvir)", "Bethany", "Cana of Galilee", 
+  "Judean Desert", "Euphrates"] , //n
+  ["Lebanon", "Mount of Beatitudes", "Mountain of Overthrow", 
+  "Zuf", "Earth Uts", 
+  "Tarshish", "Joppa", "Hebron", 
+  "Bethsaida", "Fison", "Agave (river)", 
+  "Moab", "Land of Nod"] //h
+];
+
 function startGame() {
   let flagEnd = false;
   if (time.value == "") {
@@ -99,6 +119,7 @@ function startGame() {
       if (flagEnd === true) {
         modal.classList.add("open");
         modalText.textContent ="Time is out. Your result: " + score;
+        finalArray = [];
       }
       screenFirst();
       clearInterval(intervalId);
@@ -138,6 +159,23 @@ function startGame() {
       finalArray.push(...(events[2]));
     }
   }
+  if (flagGeography == true) {
+    if (complexity.value == "Easy" || complexity.value == "") {
+      finalArray.push(...(geography[0]));
+    }
+    else if (complexity.value == "Normal") {
+      finalArray.push(...(geography[1]));
+    }
+    else if (complexity.value == "Hard") {
+      finalArray.push(...(geography[2]));
+    }
+  }
+  if (flagBooks == false && flagChar == false && flagEvents == false && flagGeography == false) {
+    modal.classList.add("open");
+    modalText.textContent ="Please select at least one topic.";
+    screenFirst();
+    return;
+  }
   wordChoice();
   screenSecond();
 }
@@ -164,6 +202,13 @@ function checkCheck() {
     label3.style.color = "black";
     flagEvents = false;
   }
+  if (checkboxGeography.checked) {
+    label4.style.color = "#65B741";
+    flagGeography = true;
+  } else {
+    label4.style.color = "black";
+    flagGeography = false;
+  }
 }
 
 function wordChoice() {
@@ -177,6 +222,7 @@ function wordChoice() {
       score = 0;
       scoreText.textContent = "Score: 0";
       timer = 0;
+      finalArray = [];
       break;
     }
   }
@@ -215,17 +261,17 @@ function touchMove(e){
 function touchEnd() {
   if(startingX+50 < movingX) {
       score++;
-      playSound("../facebook_sms.mp3");
+      //playSound("/facebook_sms.mp3");
   } else if(startingX-50 > movingX) {
       score--;
-      playSound("../oshibka-v-kompyutere.mp3");
+      //playSound("/oshibka-v-kompyutere.mp3");
   }
   scoreText.textContent = "Score: " + score;
   wordChoice();
 }
 
 function checkLang() {
-  window.location.href = "../index.html";
+  window.location.href = "/index.html";
 }
 
 function playSound(audioName) {
