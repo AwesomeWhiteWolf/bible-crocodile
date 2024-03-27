@@ -38,6 +38,7 @@ h1 {
     margin-bottom: 1.3vh; */
 }
 .set-panel {
+    position: fixed;
     padding-left: 35%;
     padding-top: 8%;
     width: 100vw;
