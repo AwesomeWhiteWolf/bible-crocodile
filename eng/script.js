@@ -39,7 +39,7 @@ const characters = [
   "Nicodemus", "Absalom", "Job", "Aaron", "Tamar", 
   "Naomi", "Ezekiel", "Jeremiah", "Isaiah", "Timofey", 
   "Ecclesiastes", "Apostle Simon the Canaanite", "Emmanuel", "Titus", "Sim", "Japheth", "Ham", 
-  "Tamar", "Hagar", "Bathsheba", "Rachel"], //n
+  "Tamar", "Hagar", "Bathsheba", "Rachel", "Stephen"], //n
   ["Apollos", "Gideon", "Haggai", "Zechariah", "Amos", 
   "Nahum", "Ezra", "Jonathan", "Mordecai", "Nehemiah", 
   "Queen of Sheba", "Jehoshaphat", "Uzziah", "Zipporah", 
@@ -260,10 +260,10 @@ function touchMove(e){
 function touchEnd() {
   if(startingX+50 < movingX) {
       score++;
-      //playSound("../facebook_sms.mp3");
+      playSound("../facebook_sms.mp3");
   } else if(startingX-50 > movingX) {
       score--;
-      //playSound("../oshibka-v-kompyutere.mp3");
+      playSound("../oshibka-v-kompyutere.mp3");
   }
   scoreText.textContent = "Score: " + score;
   wordChoice();
