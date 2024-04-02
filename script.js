@@ -40,7 +40,7 @@ const characters = [
   "Ноеминь", "Иезекииль", "Иеремия", "Исаия", "Тимофей", "Екклесиаст", 
   "Апостол Симон Кананит", "Еммануил", "Тит", "Сим", 
   "Иафет", "Хам", "Фамарь", "Агарь", "Вирсавия", 
-  "Рахиль", "Стефан"], //n.
+  "Рахиль", "Стефан"], //n
   ["Аполлос", "Гедеон", "Аггей", "Захария", "Амос", "Наум", "Ездра", 
   "Ионафан", "Мардохей", "Неемия", 
   "Царица Савская", "Иосафат", "Озия", "Сепфора", "Анна", "Тавифа", 
@@ -261,10 +261,10 @@ function touchMove(e){
 function touchEnd() {
   if(startingX+50 < movingX) {
       score++;
-      //playSound("facebook_sms.mp3");
+      playSound("facebook_sms.mp3");
   } else if(startingX-50 > movingX) {
       score--;
-      //playSound("oshibka-v-kompyutere.mp3");
+      playSound("oshibka-v-kompyutere.mp3");
   }
   scoreText.textContent = "Очки: " + score;
   wordChoice();
