@@ -8,17 +8,15 @@ const time = document.querySelector("input[type=number]");
 const complexity = document.querySelector("input[type=text]");
 const timerText = document.querySelector("#timerText");
 const scoreText = document.querySelector("#scoreText");
+const modal = document.querySelector('#modal1');
+const modalText = document.querySelector('#modalText');
+const word = document.querySelector('#word');
 
-const modal = document.getElementById('modal1');
-const modalText = document.getElementById('modalText');
-const langBtn = document.getElementById('langBtn');
+const checkboxChar = document.querySelector('#char');
+const checkboxBooks = document.querySelector('#books');
+const checkboxEvents = document.querySelector('#events');
+const checkboxGeography = document.querySelector('#geog');
 
-const checkboxChar = document.getElementById('char');
-const checkboxBooks = document.getElementById('books');
-const checkboxEvents = document.getElementById('events');
-const checkboxGeography = document.getElementById('geog');
-
-const word = document.getElementById('word');
 
 let flagChar = false;
 let flagBooks = false;
@@ -36,16 +34,18 @@ const characters = [
   "Иисус Христос", "Саул", "Ревекка", "Лот", "Марфа и Мария", "Самсон", 
   "Апостол Андрей", "Апостол Иоанн", "Понтий Пилат", 
   "Апостол Павел", "Апостол Матфей", "Апостол Иаков", 
-  "Апостол Фома", "Апостол Лука", "Апостол Филипп", "Апостол Нафанаил"], //e
+  "Апостол Фома", "Апостол Лука", "Апостол Филипп", "Апостол Нафанаил"], //e 
   ["Каин и Авель", "Есфирь", "Раав", "Руфь", "Самуил", "Даниил", 
   "Никодим", "Авессалом", "Иов", "Аарон", "Фамарь", 
   "Ноеминь", "Иезекииль", "Иеремия", "Исаия", "Тимофей", "Екклесиаст", 
-  "Апостол Симон Кананит", "Еммануил"], //n
+  "Апостол Симон Кананит", "Еммануил", "Тит", "Сим", 
+  "Иафет", "Хам", "Фамарь", "Агарь", "Вирсавия", 
+  "Рахиль", "Стефан"], //n.
   ["Аполлос", "Гедеон", "Аггей", "Захария", "Амос", "Наум", "Ездра", 
   "Ионафан", "Мардохей", "Неемия", 
   "Царица Савская", "Иосафат", "Озия", "Сепфора", "Анна", "Тавифа", 
   "Девора", "Зеведей", "Корнилий (сотник)", "Прискилла и Акила", "Осия", 
-  "Вооз", "Зоровавель", "Мириам"] //h
+  "Вооз", "Зоровавель", "Мириам", "Авимелех", "Иеффай", "Илий"] //h
 ];
 
 const books = [
@@ -84,17 +84,17 @@ const geography = [
   ["Чермное море","Вавилон", "Израиль", "Назарет", 
   "Иудея", "Содом и Гоморра", "Гора Синай", 
   "Самария", "Ханаан", "Храм Соломона", 
-  "Скиния", "Вифлеем", "Палестина", "Иерихон"], //e
-  ["Киброт-Гаттаава", "Арарат", "Иордан", 
+  "Вифлеем", "Палестина", "Иерихон", "Рим", "Эфес", "Галатия", "Гора Арарат", "Ниневия", "Египет", "Дамаск", "Месопотамия"], //e
+  ["Иордан", 
   "Колодец Иакова", "Город Давида", "Храмовая Гора", 
   "Дамаск", "Храм Зоровавеля", 
-  "Святая святых (Двир)", "Вифания", "Кана Галилейская", 
-  "Иудейская пустыня", "Ефрат"] , //n
+  "Вифания", "Кана Галилейская", 
+  "Иудейская пустыня", "Ефрат", "Вифель"] , //n
   ["Ливан", "Гора Блаженств", "Гора Свержения", 
   "Цуф", "Земля Уц", 
   "Фарсис", "Иоппия", "Хеврон", 
   "Вифсаида", "Фисон", "Агава (река)", 
-  "Моав", "Земля Нод"] //h
+  "Моав", "Земля Нод", "Гихон", "Хиддекель", "Киброт-Гаттаава", "Гора Иегова–Ире"] //h
 ];
 
 
@@ -261,10 +261,10 @@ function touchMove(e){
 function touchEnd() {
   if(startingX+50 < movingX) {
       score++;
-      playSound("facebook_sms.mp3");
+      //playSound("facebook_sms.mp3");
   } else if(startingX-50 > movingX) {
       score--;
-      playSound("oshibka-v-kompyutere.mp3");
+      //playSound("oshibka-v-kompyutere.mp3");
   }
   scoreText.textContent = "Очки: " + score;
   wordChoice();

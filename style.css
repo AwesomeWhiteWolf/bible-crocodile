@@ -5,7 +5,6 @@
     box-sizing: border-box;
     font-family: "Madimi One", sans-serif;
     font-weight: 600;
-    font-style: normal;
     user-select: none;
     color: var(--text-color);
 }
@@ -29,17 +28,15 @@ main {
 }
 h1 {
     display: block;
+    padding-left: 20%;
+    margin: 4vh 0 3vh;
     font-size: 1.7em;
-    padding-left: 40%;
     background: var(--back-color);
     color: var(--panel-color);
-    margin: 4vh 0 3vh;
-    /* margin-top: 3vh;
-    margin-bottom: 1.3vh; */
 }
 .set-panel {
     position: fixed;
-    padding-left: 35%;
+    padding-left: 20%;
     padding-top: 8%;
     width: 100vw;
     height: 87vh;
@@ -50,19 +47,18 @@ h2 {
     font-size: 1em;
     margin: 10% 0 5%;
 }
-
+#themes {
+    width: 60vw;
+}
 #themes > *{
     font-size: 1.2em;
 }
 .box {
-    display: inline-block;
+    display: flex;
     border-radius: 10px;
     border: 1px solid gray;
     padding: 5px;
     margin-bottom: 5%;
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
 }
 .check {
     margin: 0 4% 0 1%;
@@ -83,15 +79,12 @@ h2 {
     align-items: center;
 }
 input {
-    display: inline-block;
     outline: none;
     border: 1px solid var(--text-color);
     padding: 3px 0;
     border-radius: 10px;
     text-align: center;
     font-size: 1.1em;
-}
-input[type="number"] {
     margin-left: 33%;
 }
 input[type="text"] {
@@ -104,8 +97,8 @@ button {
     border-radius: 20px;
     font-size: 150%;
     padding: 10px 10px 14px;
-    margin-left: 10%;
-    margin-top: 30%;
+    margin-left: 5%;
+    margin-top: 20%;
     background-color: var(--button-color);
     border: none;
 }
@@ -116,7 +109,6 @@ button:active {
 #backBtn {
     font-size: 38px;
     margin-top: 2vh;
-    margin-bottom: 1.3vh;
     display: none;
     background: none;
     color: var(--panel-color);
@@ -201,15 +193,5 @@ h3 {
 .modal.open .modal-box {
     transform: scale(1);
 }
-
-@media screen and (max-width: 1100px) {
-    h1 {
-        padding-left: 20%;
-    }
-    .set-panel {
-        padding-left: 20%;
-    }     
-    #themes {
-        width: 60vw;
-    }
-}
+ 
+    

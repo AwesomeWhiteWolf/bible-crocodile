@@ -8,17 +8,15 @@ const time = document.querySelector("input[type=number]");
 const complexity = document.querySelector("input[type=text]");
 const timerText = document.querySelector("#timerText");
 const scoreText = document.querySelector("#scoreText");
+const modal = document.querySelector('#modal1');
+const modalText = document.querySelector('#modalText');
+const word = document.querySelector('#word');
 
-const modal = document.getElementById('modal1');
-const modalText = document.getElementById('modalText');
-const langBtn = document.getElementById('langBtn');
+const checkboxChar = document.querySelector('#char');
+const checkboxBooks = document.querySelector('#books');
+const checkboxEvents = document.querySelector('#events');
+const checkboxGeography = document.querySelector('#geog');
 
-const checkboxChar = document.getElementById('char');
-const checkboxBooks = document.getElementById('books');
-const checkboxEvents = document.getElementById('events');
-const checkboxGeography = document.getElementById('geog');
-
-const word = document.getElementById('word');
 
 let flagChar = false;
 let flagBooks = false;
@@ -40,13 +38,14 @@ const characters = [
   ["Cain and Abel", "Esther", "Rahab", "Ruth", "Samuel", "Daniel", 
   "Nicodemus", "Absalom", "Job", "Aaron", "Tamar", 
   "Naomi", "Ezekiel", "Jeremiah", "Isaiah", "Timofey", 
-  "Ecclesiastes", "Apostle Simon the Canaanite", "Emmanuel"], //n
+  "Ecclesiastes", "Apostle Simon the Canaanite", "Emmanuel", "Titus", "Sim", "Japheth", "Ham", 
+  "Tamar", "Hagar", "Bathsheba", "Rachel"], //n
   ["Apollos", "Gideon", "Haggai", "Zechariah", "Amos", 
   "Nahum", "Ezra", "Jonathan", "Mordecai", "Nehemiah", 
   "Queen of Sheba", "Jehoshaphat", "Uzziah", "Zipporah", 
   "Anna", "Tabitha", "Devorah", "Zebedee", 
   "Cornelius (centurion)", "Priscilla and Aquila", 
-  "Hosea", "Boaz", "Zerubbabel"] //h
+  "Hosea", "Boaz", "Zerubbabel", "Miriam", "Abimelech", "Jephthah", "Elijah"] //h
 ];
 
 const books = [
@@ -86,17 +85,17 @@ const geography = [
   ["Red Sea","Babylon", "Israel", "Nazareth", 
   "Judea", "Sodom and Gomorrah", "Mount Sinai", 
   "Samaria", "Canaan", "Temple of Solomon", 
-  "Tabernacle", "Bethlehem", "Palestine", "Jericho"], //e
-  ["Kibrot-Gattaawa", "Ararat", "Jordan", 
+  "Bethlehem", "Palestine", "Jericho", "Rome", "Ephesus", "Galatia", "Ararat Mount", "Nineveh", "Egypt", "Damascus", "Mesopotamia"], //e
+  ["Jordan", 
   "Jacob's Well", "City of David", "Temple Mount", 
   "Damascus", "Temple of Zerubbabel", 
-  "Holy of Holies (Dvir)", "Bethany", "Cana of Galilee", 
-  "Judean Desert", "Euphrates"] , //n
+  "Bethany", "Cana of Galilee", 
+  "Judean Desert", "Euphrates", "Vifel"] , //n
   ["Lebanon", "Mount of Beatitudes", "Mountain of Overthrow", 
   "Zuf", "Earth Uts", 
   "Tarshish", "Joppa", "Hebron", 
   "Bethsaida", "Fison", "Agave (river)", 
-  "Moab", "Land of Nod"] //h
+  "Moab", "Land of Nod", "Gihon", "Khiddekel", "Kibrot-Gattaawa", "Mount Jehovah-Jireh"] //h
 ];
 
 function startGame() {
@@ -261,10 +260,10 @@ function touchMove(e){
 function touchEnd() {
   if(startingX+50 < movingX) {
       score++;
-      playSound("../facebook_sms.mp3");
+      //playSound("../facebook_sms.mp3");
   } else if(startingX-50 > movingX) {
       score--;
-      playSound("../oshibka-v-kompyutere.mp3");
+      //playSound("../oshibka-v-kompyutere.mp3");
   }
   scoreText.textContent = "Score: " + score;
   wordChoice();
