@@ -40,7 +40,7 @@ const characters = [
   "Ноеминь", "Иезекииль", "Иеремия", "Исаия", "Тимофей", "Екклесиаст", 
   "Апостол Симон Кананит", "Еммануил", "Тит", "Сим", 
   "Иафет", "Хам", "Фамарь", "Агарь", "Вирсавия", 
-  "Рахиль", "Стефан"], //n
+  "Рахиль", "Стефан"], //n.
   ["Аполлос", "Гедеон", "Аггей", "Захария", "Амос", "Наум", "Ездра", 
   "Ионафан", "Мардохей", "Неемия", 
   "Царица Савская", "Иосафат", "Озия", "Сепфора", "Анна", "Тавифа", 
@@ -102,23 +102,23 @@ const geography = [
 function startGame() {
   let flagEnd = false;
   if (time.value == "") {
-    timerText.textContent = "Время: " + 60; 
+    timerText.textContent = "Время: 60"; 
     timer = 60;
   } else { 
-    timerText.textContent = "Время: " + time.value;
+    timerText.textContent = `Время: ${time.value}`;
     timer = time.value;
   }
 
   const intervalId = setInterval(function() {
     timer--;
-    timerText.textContent = "Время: " + timer;
+    timerText.textContent = `Время: ${timer}`;
     if (timer == 1) {
       flagEnd = true;
     }
     if (timer < 0) {
       if (flagEnd === true) {
         modal.classList.add("open");
-        modalText.textContent ="Время вышло. Ваш результат: " + score;
+        modalText.textContent =`Время вышло. Ваш результат: ${score}`;
         finalArray = [];
       }
       screenFirst();
@@ -217,7 +217,7 @@ function wordChoice() {
     randNum = Math.floor(Math.random() * finalArray.length);
     if ([...new Set(finalArray)].length == 1) {
       modal.classList.add("open");
-      modalText.textContent ="Слова закончились, скоро добавим больше :) Ваш результат: " + score;
+      modalText.textContent =`Слова закончились, скоро добавим больше :) Ваш результат: ${score}`;
       screenFirst();
       score = 0;
       scoreText.textContent = "Очки: 0";
@@ -261,12 +261,12 @@ function touchMove(e){
 function touchEnd() {
   if(startingX+50 < movingX) {
       score++;
-      playSound("facebook_sms.mp3");
+      //playSound("facebook_sms.mp3");
   } else if(startingX-50 > movingX) {
       score--;
-      playSound("oshibka-v-kompyutere.mp3");
+      //playSound("oshibka-v-kompyutere.mp3");
   }
-  scoreText.textContent = "Очки: " + score;
+  scoreText.textContent = `Очки: ${score}`;
   wordChoice();
 }
 

@@ -101,23 +101,23 @@ const geography = [
 function startGame() {
   let flagEnd = false;
   if (time.value == "") {
-    timerText.textContent = "Time: " + 60; 
+    timerText.textContent = "Time: 60"; 
     timer = 60;
   } else { 
-    timerText.textContent = "Time: " + time.value;
+    timerText.textContent = `Time: ${time.value}`;
     timer = time.value;
   }
 
   const intervalId = setInterval(function() {
     timer--;
-    timerText.textContent = "Time: " + timer;
+    timerText.textContent = `Time: ${timer}`;
     if (timer == 1) {
       flagEnd = true;
     }
     if (timer < 0) {
       if (flagEnd === true) {
         modal.classList.add("open");
-        modalText.textContent ="Time is out. Your result: " + score;
+        modalText.textContent =`Time is out. Your result: ${score}`;
         finalArray = [];
       }
       screenFirst();
@@ -216,7 +216,7 @@ function wordChoice() {
     randNum = Math.floor(Math.random() * finalArray.length);
     if ([...new Set(finalArray)].length == 1) {
       modal.classList.add("open");
-      modalText.textContent ="We've run out of words, we'll add more soon :) Your result: " + score;
+      modalText.textContent =`We've run out of words, we'll add more soon :) Your result: ${score}`;
       screenFirst();
       score = 0;
       scoreText.textContent = "Score: 0";
@@ -260,12 +260,12 @@ function touchMove(e){
 function touchEnd() {
   if(startingX+50 < movingX) {
       score++;
-      playSound("../facebook_sms.mp3");
+      //playSound("../facebook_sms.mp3");
   } else if(startingX-50 > movingX) {
       score--;
-      playSound("../oshibka-v-kompyutere.mp3");
+      //playSound("../oshibka-v-kompyutere.mp3");
   }
-  scoreText.textContent = "Score: " + score;
+  scoreText.textContent = `Score: ${score}`;
   wordChoice();
 }
 
