@@ -45,7 +45,8 @@ const characters = [
   "Queen of Sheba", "Jehoshaphat", "Uzziah", "Zipporah", 
   "Anna", "Tabitha", "Devorah", "Zebedee", 
   "Cornelius (centurion)", "Priscilla and Aquila", 
-  "Hosea", "Boaz", "Zerubbabel", "Miriam", "Abimelech", "Jephthah", "Elijah"] //h
+  "Hosea", "Boaz", "Zerubbabel", "Miriam", "Abimelech", "Jephthah", "Elijah",
+  "Jacob (Christ's brother)", "Judas (Christ's brother)", "Melchizedek", "Elisha"] //h
 ];
 
 const books = [
@@ -68,17 +69,17 @@ const events = [
   "David Vs Goliath", "Good Samaritan", "Tower of Babel", 
   "Baptism of Jesus", "Jesus' Fast in the Desert", 
   "Exodus from Egypt", "Raising Lazarus", "Lot's rescue", 
-  "David's sin", "Lord's Supper"], //e
+  "David's sin", "Lord's Supper", "10 Commandments"], //e
   ["Sermon on the Mount", "Walking on water", "Prodigal son", 
   "Pharisee and Publican", "Rich young man", "Age of Judges", 
   "Construction of the Temple by Solomon", "Test of Abraham", 
   "Conversion of the Apostle Paul", "Capture of Jericho", "Jacob's Dream", 
-  "Crossing the Red Sea", "12 spies"] , //n
+  "Crossing the Red Sea", "12 spies", "The Repentance of Nineveh", "The Dream of Nebuchadnezzar", "Gideon and the Fleece", "Jesus Feeds the Hungry"] , //n
   ["Paul and Silas in prison", "Moses and the Brass Serpent", "Babylonian captivity", 
   "Rahab and the spies", "Covenant between God and Abraham", 
   "Division of the Kingdom of Israel", "Miracle of Purim", "Conquest of Canaan", 
   "Burning thorn bush", "Finding a wife for Isaac", "Widow's Mite", 
-  "Marriage in Cana of Galilee", "Expulsion of traders from the temple"] //h
+  "Marriage in Cana of Galilee", "Expulsion of traders from the temple", "Four in the Fiery Furnace", "Elijah Against the Prophets of Baal"] //h
 ];
 
 const geography = [
@@ -125,6 +126,7 @@ function startGame() {
     }
   }, 1000);
 
+  finalArray = [];
   if (flagChar == true) {
     if (complexity.value == "Easy" || complexity.value == "") {
       finalArray.push(...(characters[0]));
