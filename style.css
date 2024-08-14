@@ -93,11 +93,14 @@ input[type="text"] {
 .level {
     margin-top: 1.4%;
 }
+.btns {
+    display: flex;
+}
 button {
     border-radius: 20px;
-    font-size: 150%;
+    font-size: 110%;
     padding: 10px 10px 14px;
-    margin-left: 5%;
+    margin-right: 5%;
     margin-top: 20%;
     background-color: var(--button-color);
     border: none;
@@ -177,7 +180,7 @@ h3 {
 #close-btn {
     position: absolute;
     font-size: 20px;
-    top: -35px;
+    top: -75px;
     right: 20px;
     border: none;
     background-color: transparent;

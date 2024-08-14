@@ -38,7 +38,7 @@ const characters = [
   ["Cain and Abel", "Esther", "Rahab", "Ruth", "Samuel", "Daniel", 
   "Nicodemus", "Absalom", "Job", "Aaron", "Tamar", 
   "Naomi", "Ezekiel", "Jeremiah", "Isaiah", "Timofey", 
-  "Ecclesiastes", "Apostle Simon the Canaanite", "Emmanuel", "Titus", "Sim", "Japheth", "Ham", 
+  "Ecclesiastes", "Apostle Simon the Canaanite", "Titus", "Sim", "Japheth", "Ham", 
   "Tamar", "Hagar", "Bathsheba", "Rachel", "Stephen"], //n
   ["Apollos", "Gideon", "Haggai", "Zechariah", "Amos", 
   "Nahum", "Ezra", "Jonathan", "Mordecai", "Nehemiah", 
@@ -92,9 +92,9 @@ const geography = [
   "Damascus", "Temple of Zerubbabel", 
   "Bethany", "Cana of Galilee", 
   "Judean Desert", "Euphrates", "Vifel"] , //n
-  ["Lebanon", "Mount of Beatitudes", "Mountain of Overthrow", 
-  "Zuf", "Earth Uts", 
-  "Tarshish", "Joppa", "Hebron", 
+  ["Lebanon", "Mount of Beatitudes", 
+  "Zuf", "Earth Uts", "Silom", "Gibeah", "Gath", 
+  "Tarshish", "Joppa", "Hebron", "Mount of Olives", 
   "Bethsaida", "Fison", "Agave (river)", 
   "Moab", "Land of Nod", "Gihon", "Khiddekel", "Kibrot-Gattaawa", "Mount Jehovah-Jireh"] //h
 ];
@@ -271,7 +271,7 @@ function touchEnd() {
   wordChoice();
 }
 
-function checkLang() {
+function changeLang() {
   window.location.href = "../index.html";
 }
 
